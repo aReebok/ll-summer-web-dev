@@ -11,3 +11,4 @@ Summer program (9 weeks) personal website development project exercises through 
 
 ## Resources
 * Free Course: Beginner Web Design using HTML5, CSS3 & Visual Studio Code by Bring Your Own Laptop at https://www.youtube.com/watch?v=C5QFHp1oAws
+* Flexbox CSS YouTube tutorial at https://www.youtube.com/watch?v=JJSoEo8JSnc
