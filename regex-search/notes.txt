@@ -1,0 +1,18 @@
+This website will take a string from the user, ie. "password", "email address",
+    "phone number" and more to find the regular expression for it. It will also
+    allow user to test different string inputs right underneath to check to see
+    it matches the regular expression.
+
+Some things I will need:
+    - wireframe for the webpage(s).
+    - a python webscraping script that scrapes RegExLib and puts up to 5 regular
+    expressions into a text file.
+    - HTML and CSS scripts for a simple search page.
+    - javascript for event handelings.
+
+
+Resources: 
+    1. the RegExLib (it has regular expressions written by many people)!
+        https://regexlib.com 
+    2. Beautiful Soup 4 documentation (web scraping python library): 
+        https://www.crummy.com/software/BeautifulSoup/bs4/doc/
