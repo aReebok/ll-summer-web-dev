@@ -1,6 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 
+''' GLOBAL VARS'''
+MAX_TABLE = 1 #100      # the number of data that will be added to csv
+RM_STR = '[email'
+
 '''
     Creates a data storing class of Table that stores attributes:
     expression name, expression, description and author
@@ -8,6 +12,15 @@ import requests
 class Table: 
     def __init__(self, exp_name, exp, description, author):
         self.exp_name = exp_name
+
+        result = exp.find(RM_STR)       # gets rid of '[email protected]'
+        if result != -1:        
+            exp = exp[result:]          # cuts string up to result and then up to ']'
+            j = 0
+            while j < len(exp) and exp[j] != ']':
+                j += 1
+            exp = exp[j+1:]
+
         self.exp = exp
         description =  description.split('\n')[0]
         self.description = description
@@ -29,8 +42,6 @@ class Table:
         print("Author: " + self.author)
         print("------xxx------")
 
-''' GLOBAL VARS'''
-MAX_TABLE = 1 #100      # the number of data that will be added to csv
 
 def create_table(table):
     try:
