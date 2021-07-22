@@ -1,8 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 
+import csv
+
 ''' GLOBAL VARS'''
-MAX_TABLE = 1 #100      # the number of data that will be added to csv
+MAX_TABLE = 5 #100      # the number of data that will be added to csv
 RM_STR = '[email'
 
 '''
@@ -29,9 +31,15 @@ class Table:
     '''
     writes content into a csv file for given table
     '''
-    def write_into_file(self):
-        print("Writing attributes into csv file...")        
-    
+    def get_row(self):
+        row = []
+        row.append(self.exp_name)
+        row.append(self.exp)
+        row.append(self.description)
+        row.append(self.author)
+
+        return row
+
     '''
     displays the table class objects
     '''
@@ -71,8 +79,13 @@ list_tables = []
 if MAX_TABLE > len(table):
     MAX_TABLE = len(table)
 
+f = open('pg_content.csv', 'w')
+writer = csv.writer(f)
+
+count = 0
 for i in range(MAX_TABLE):
     list_tables.append(create_table(table[i]))
-
-for tab in list_tables:
-    tab.print_table()
+    writer.writerow(list_tables[count].get_row())
+    count += 1
+    
+f.close()
