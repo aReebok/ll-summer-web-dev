@@ -8,20 +8,25 @@ class Table:
     def __init__(self, exp_name, exp, description, author):
         self.exp_name = exp_name
         self.exp = exp
+        # if len(description) > 200:
+        #     description = description[0:125]
+        description =  description.split('\n')[0]
         self.description = description
         self.author = author
     
     def write_into_file(self):
-        print("Writing attributes into csv file...")
-
-    def check_len(self):
-        if len(self.description) > 20:
-            self.description = self.description[0:20]
+        print("Writing attributes into csv file...")        
+    
+    # def print_desc(self):
+    #     temp_desc = self.description.split('\n')[0]
+    #     print(temp_desc) 
 
     def print_table(self):
         print("Title: " + self.exp_name)
         print("Expression: " + self.exp)
+
         print("Description: " + self.description)
+
         print("Author: " + self.author)
         print("------xxx------")
 
@@ -38,8 +43,6 @@ def create_table(table):
 
         expression = table.find('div', class_="expressionDiv").text.strip()
         description = table.find('div', class_="overflowFixDiv").text.strip()
-
-
 
     except Exception as e:
         exp_name, exp_author, expression, description = '' 
@@ -69,5 +72,6 @@ list_tables.append(create_table(table[4]))
 
 for tab in list_tables:
     tab.print_table()
+    # tab.print_desc()
 
 # print(list_tables)
