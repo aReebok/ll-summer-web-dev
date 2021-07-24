@@ -1,3 +1,4 @@
+from os import link
 from bs4 import BeautifulSoup
 import requests
 
@@ -12,7 +13,7 @@ RM_STR = '[email'
     expression name, expression, description and author
 '''
 class Table: 
-    def __init__(self, exp_name, exp, description, author):
+    def __init__(self, exp_name, exp, description, link, author):
         self.exp_name = exp_name
 
         result = exp.find(RM_STR)       # gets rid of '[email protected]'
@@ -22,11 +23,13 @@ class Table:
             while j < len(exp) and exp[j] != ']':
                 j += 1
             exp = exp[j+1:]
-
         self.exp = exp
-        description =  description.split('\n')[0]
+
+        description =  description.split('\n')[0].replace(',', '')
         self.description = description
-        self.author = author
+
+        self.link = link
+        self.author = author.replace(',', '')
     
     '''
     writes content into a csv file for given table
@@ -36,6 +39,7 @@ class Table:
         row.append(self.exp_name)
         row.append(self.exp)
         row.append(self.description)
+        row.append(self.link)
         row.append(self.author)
 
         return row
@@ -44,16 +48,17 @@ class Table:
     displays the table class objects
     '''
     def print_table(self):
-        print("Title: " + self.exp_name)
-        print("Expression: " + self.exp)
-        print("Description: " + self.description)
-        print("Author: " + self.author)
-        print("------xxx------")
+        print("Title: " + self.exp_name + "\nExpression: " + self.exp \
+        + "\nDescription: " + self.description + "\nLink: " + self.link \
+        + "\nAuthor: " + self.author + "\n------xxx------")
 
 
 def create_table(table):
     try:
         all_as = table.find_all('a')        # creates an array of all a tags
+        # print(all_as[2].get('href'))        # href is in all_as[2] 
+        link = 'regexlib.com/' + all_as[2].get('href')
+
         exp_name = all_as[2].text.strip()   # index [2] holds expression name
         exp_author = all_as[len(all_as) - 1].text.strip() # index [last item] holds expression author
 
@@ -63,12 +68,13 @@ def create_table(table):
     except Exception as e:
         exp_name, exp_author, expression, description = '' 
 
-    table = Table(exp_name, expression, description, exp_author)
+    table = Table(exp_name, expression, description, link, exp_author)
+    # table.print_table()
     return table
 
 '''web scraping code
 given a webpage, up to 5 tables are copied and placed into a csv file'''
-webpage = "https://regexlib.com/Search.aspx?k=email&c=-1&m=-1&ps=20"
+webpage = "https://regexlib.com/Search.aspx?k=password&c=-1&m=-1&ps=20"
 source = requests.get(webpage).text
 
 soup = BeautifulSoup(source, 'lxml')
@@ -85,7 +91,9 @@ writer = csv.writer(f)
 count = 0
 for i in range(MAX_TABLE):
     list_tables.append(create_table(table[i]))
-    writer.writerow(list_tables[count].get_row())
+    # print("HERE LINE 94: " + list_tables[count].exp)
+    if list_tables[count].exp != '': 
+        writer.writerow(list_tables[count].get_row())
     count += 1
     
 f.close()
