@@ -7,6 +7,8 @@ Some things I will need:
     - wireframe for the webpage(s).
     - a python webscraping script that scrapes RegExLib and puts up to 5 regular
     expressions into a text file.
+        - I want to use python instead of JS for webscraping because I have 
+        previous experience in using BeautifulSoup
     - HTML and CSS scripts for a simple search page.
     - javascript for event handelings.
 
@@ -16,3 +18,5 @@ Resources:
         https://regexlib.com 
     2. Beautiful Soup 4 documentation (web scraping python library): 
         https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+    3. Email Validation in JavaScript https://www.youtube.com/watch?v=nm44wI6zOSc
+    
