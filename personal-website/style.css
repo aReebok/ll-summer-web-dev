@@ -1,0 +1,39 @@
+body {
+    padding: 10px;
+    background-color: lightblue;
+}
+
+.resume-container {
+    background-color: lightcoral;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1024px;
+    padding: 1em;
+}
+
+.resume-container .header {
+    background-color: pink;
+    color: black;
+    padding: 1em;
+}
+
+.resume-container .education{
+    display: flex;
+
+    background-color: pink;
+    color: black;
+    padding: 1em;
+}
+
+.resume-container .education .c1 {
+    flex: 3;
+}
+.resume-container .education .c2 {
+    flex: 1;
+}
+
+.resume-container .courses {
+    background-color: pink;
+    color: black;
+    padding: 1em;
+}
