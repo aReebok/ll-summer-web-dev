@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 '''
 This .py takes the 'user_input.txt' file, appends it to the RegExLib.com search link,
@@ -5,6 +6,7 @@ and scrapes up to MAX_TABLE different expressions and it's details. Finally, it
 writes these out into a file called 'pg_content.txt' for other files to use.
 '''
 
+import sys
 from os import link
 from bs4 import BeautifulSoup
 import requests
@@ -100,3 +102,5 @@ for i in range(MAX_TABLE):
     count += 1
     
 f.close()
+
+print("file created")
