@@ -1,26 +1,49 @@
 body {
     padding: 10px;
-    background-color: lightblue;
+    font-family: 'EB Garamond', serif;
+    background-color: rgb(255, 255, 255);
 }
 
 .resume-container {
-    background-color: lightcoral;
+    background-color: white;
     margin-left: auto;
     margin-right: auto;
-    width: 1024px;
-    padding: 1em;
+    width: 720px;
+    /* padding: 1em; */
+}
+
+h1 {
+    color: rgb(22, 96, 139);
 }
 
 .resume-container .header {
-    background-color: pink;
+    background-color: white;
+    text-align: center;
+    /* padding: 1em; */
+    
+}
+
+.personal-info{
+    background-color: rgb(233, 233, 233);
+    flex-direction: row;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    
+}
+
+.personal-info a{
     color: black;
-    padding: 1em;
+    text-decoration: none;
+    font-size: 14px;
+    padding-left: 27px;
+    padding-right: 27px;
 }
 
 .resume-container .education{
     display: flex;
 
-    background-color: pink;
+    background-color: white;
     color: black;
     padding: 1em;
 }
@@ -32,8 +55,18 @@ body {
     flex: 1;
 }
 
+.headshot {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+}
+
 .resume-container .courses {
-    background-color: pink;
+    background-color: white;
     color: black;
     padding: 1em;
 }
