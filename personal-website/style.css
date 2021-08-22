@@ -1,7 +1,10 @@
+* {box-sizing:border-box}
+
 body {
     padding: 10px;
     font-family: 'EB Garamond', serif;
     background-color: rgb(255, 255, 255);
+    text-transform: lowercase;
 }
 
 .resume-container {
@@ -10,15 +13,37 @@ body {
     margin-right: auto;
     width: 720px;
     /* padding: 1em; */
+    line-height : 20px;
 }
+
+/* ul li:before{ 
+    color: #5d2735;
+    content:"• ";
+    font-size:10pt;
+} */
+ul {
+    padding-top: 0em;
+    padding-bottom: 0.4em;
+    margin: 0;
+    /* font-size: 10pt;  */
+    list-style: none; 
+    padding-left: 15px;
+}
+ul li span {position:relative; left:-7px;}
+
 
 h1 {
     color: rgb(22, 96, 139);
+    /* color: #a25a66; */
+    padding : 0;
+    margin-top : 0;
+    line-height : 24px;
 }
 
 .resume-container .header {
     background-color: white;
     text-align: center;
+    font-size: 22px;
     /* padding: 1em; */
     
 }
@@ -42,7 +67,7 @@ h1 {
 
 .resume-container .education{
     display: flex;
-
+    margin: 0;
     background-color: white;
     color: black;
     padding: 1em;
@@ -53,6 +78,106 @@ h1 {
 }
 .resume-container .education .c2 {
     flex: 1;
+}
+
+
+/* 
+SECTION 2 css code 
+*/
+.section-2 {
+    display: flex;
+    margin: 0;
+    padding: 1em;
+}
+
+.section-2 p{
+    padding-bottom: 5px;
+}
+
+.courses-container {
+    flex: 3;
+}
+.skill-container {
+    flex: 2;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+ol li{
+    /* font-size: 200px; */
+    /* background-color: burlywood; */
+    /* margin: 0; */
+    position: relative;
+    list-style: none;
+    padding-top: 5px;;
+    margin: 20px 0;
+    font-weight: 500;
+    /* text-transform: uppercase; */
+}
+
+
+ol li:before{
+    content: "";
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: rgba(22, 96, 139, .5);
+    border-radius: 1000px;
+    margin-bottom: 20px;
+}
+
+ol li:after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 0%;
+    height: 10px;
+    background-color: rgba(22, 96, 139, 1);
+    border-radius: 1000px;
+    margin-bottom: 20px;
+    animation-duration: .9s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+ol li.cpp::after{
+    animation-name: cpp;
+}
+@keyframes cpp {
+    to {
+        width: 80%;
+    }
+}
+
+ol li.py::after{
+    animation-name: py;
+}
+@keyframes py {
+    to {
+        width: 65%;
+    }
+}
+
+ol li.html::after{
+    animation-name: html;
+}
+@keyframes html {
+    to {
+        width: 45%;
+    }
+}
+
+/* end of section-2 css code*/
+
+
+p {
+    /* background-color : #cfc; */
+    padding : 0;
+    margin : 0;
+    line-height : 20px;
 }
 
 .headshot {
